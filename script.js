@@ -1,16 +1,3 @@
-// FETCHING DATA FROM LOCAL JSON AND APPENDING TO WEBPAGE
-// fetching our people.json file
-// we run the then function with the response as a parameter
-// To get the JSON data from the response, we execute the json() function
-// the json() function also returns a promise.
-// this is why we just return it and chain another then function
-// n the second then function we get the actual JSON data as a parameter
-// This data looks just like the data in our JSON file
-// Now we can take this data and display it on our HTML page.
-// Notice that we are calling a function called appendData.
-// This is where we create the code which will append the data to our page.
-// Source: https://howtocreateapps.com/fetch-and-display-json-html-javascript/
-
 // let response = fetch("data.json")
 //   .then((response) => response.json())
 //   .then((data) => {
@@ -39,6 +26,10 @@
 
 // How to put a fetch request inside a function and wait for the return value when I call the function
 // https://stackoverflow.com/questions/62880991/how-to-put-a-fetch-request-inside-a-function-and-wait-for-the-return-value-when
+
+const main = () => {
+  getUserImage();
+};
 
 const getLocalJson = () => {
   return fetch("data.json", {
@@ -70,7 +61,8 @@ const getUserImage = () => {
     userImgContainer.appendChild(userImg);
   });
 };
-getUserImage();
+
+main();
 
 /* 
 QUESTIONS GOOGLED
