@@ -29,6 +29,7 @@
 
 const main = () => {
   getUserImage();
+  getComments();
 };
 
 const getLocalJson = () => {
@@ -59,6 +60,26 @@ const getUserImage = () => {
     let userImg = document.createElement("img");
     userImg.src = data.currentUser.image.png;
     userImgContainer.appendChild(userImg);
+  });
+};
+
+const getComments = () => {
+  getLocalJson().then((data) => {
+    let commentsContainer = document.getElementById("comments-container");
+    let comments = document.getElementById("comment");
+
+    let str = `<ul>`;
+    data.comments.forEach((comment) => {
+      let commentImg = document.createElement("img");
+      str += `
+      <img src=${comment.user.image.png} />
+      ${comment.user.username}
+      ${comment.createdAt}
+      <li>${commentImg.src}${comment.content}</li>
+      `;
+      comments.innerHTML = str;
+      commentsContainer.appendChild(comments);
+    });
   });
 };
 
